@@ -8,13 +8,16 @@ const db = new sqlite3.Database('./data/database.db', (err) => {
   }
 })
 
-// Create a new table called 'users' if it doesn't already exist
+// Create the 'users' table with password and timestamps if it doesn't exist
 db.serialize(() => {
   db.run(`
     CREATE TABLE IF NOT EXISTS users (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
       name TEXT NOT NULL,
-      email TEXT NOT NULL UNIQUE
+      email TEXT NOT NULL UNIQUE,
+      password TEXT NOT NULL,
+      created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+      updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
     );
   `)
 

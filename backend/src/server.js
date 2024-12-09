@@ -1,10 +1,17 @@
 const express = require('express')
-const connectDB = require('./src/config/connectLocalDb') // Import the database connection function
+const connectLocalDb = require('./src/config/connectLocalDb') // Import the database connection function
+const userRoutes = require('./src/routes/userRoutes')
+const bodyParser = require('body-parser')
+
+require('dotenv').config()
 
 const app = express()
 
 // Initialize SQLite database connection
 const db = connectLocalDb()
+app.use(bodyParser.json())
+
+app.use('/api/users', userRoutes)
 
 // Example route to fetch data from SQLite database
 app.get('/data', (req, res) => {
