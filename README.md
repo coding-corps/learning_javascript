@@ -44,12 +44,23 @@ project/
 
 
 ## Setup Instructions
+
+
 #### Prerequisites
 ``` 
 Node.js (v16+)
 npm or yarn
 MongoDB (local or cloud) / sqllite3
 ```
+
+from the main folder run the make cmd :
+
+``` make 
+make setup-db 
+```
+to create and run the initial db migrations 
+
+
 #### Backend Setup
 Navigate to the backend folder:
 ``` bash
