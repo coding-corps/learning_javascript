@@ -2,6 +2,7 @@ const express = require('express')
 const userRoutes = require('./routes/userRoutes')
 const bodyParser = require('body-parser')
 const connectLocalDb = require('./config/local_db')
+const cors = require('cors')
 
 require('dotenv').config()
 
@@ -10,6 +11,14 @@ const app = express()
 // Initialize SQLite database connection
 const db = connectLocalDb()
 app.use(bodyParser.json())
+
+app.use(
+  cors({
+    origin: 'http://localhost:3000', // Allow frontend React app to make requests
+    methods: ['GET', 'POST', 'PUT', 'DELETE'], // Specify allowed HTTP methods
+    allowedHeaders: ['Content-Type', 'Authorization'], // Specify allowed headers
+  }),
+)
 
 app.use('/api/users', userRoutes)
 

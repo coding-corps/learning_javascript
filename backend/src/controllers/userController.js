@@ -8,7 +8,7 @@ const db = connectLocalDb()
 // Create User
 const createUser = async (req, res) => {
   const { name, email, password } = req.body
-
+  console.log('creating user')
   // Hash password before storing it
   const hashedPassword = await bcrypt.hash(password, 10)
 
@@ -52,7 +52,7 @@ const loginUser = async (req, res) => {
 
 // Get All Users
 const getUsers = (req, res) => {
-  db.all('SELECT * FROM users', (err, rows) => {
+  db.all('SELECT name, email FROM users', (err, rows) => {
     if (err) {
       return res
         .status(500)
