@@ -1,7 +1,7 @@
 const express = require('express')
-const connectLocalDb = require('./src/config/connectLocalDb') // Import the database connection function
-const userRoutes = require('./src/routes/userRoutes')
+const userRoutes = require('./routes/userRoutes')
 const bodyParser = require('body-parser')
+const connectLocalDb = require('./config/local_db')
 
 require('dotenv').config()
 

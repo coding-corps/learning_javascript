@@ -1,8 +1,8 @@
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
+const connectLocalDb = require('../config/local_db')
 require('dotenv').config()
 
-const connectLocalDb = require('../config/connectLocalDb')
 const db = connectLocalDb()
 
 // Create User
