@@ -34,3 +34,7 @@ clean:
 	@echo "Removing project directories..."
 	@rm -rf backend frontend
 	@echo "Project directories removed."
+
+
+setup-db:
+	@node backend/src/config/setup_local_db.js
